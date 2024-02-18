@@ -1,10 +1,7 @@
-# Specify the base image
-FROM docker.elastic.co/elasticsearch/elasticsearch:${ELASTICSEARCH_VERSION}
+FROM docker.elastic.co/elasticsearch/elasticsearch:7.10.0
 
-# Copy the Elasticsearch configuration file into the container
-COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+# Example: Setting discovery type to single-node for simplicity
+ENV discovery.type=single-node
 
-# Expose the default Elasticsearch port
-EXPOSE 9200
-
-# The entrypoint is inherited from the base image, so it does not need to be redefined
+# Expose default ports (Optional here since EXPOSE doesn't actually publish ports)
+EXPOSE 9200 9300
